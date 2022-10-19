@@ -232,7 +232,7 @@ public class DBmanager {
             
             disconnectDB();
             
-            Component c = new Component( componentName, componentPrice, componentQuantity, smd, releaseDate);
+            Component c = new Component(componentID, componentName, componentPrice, componentQuantity, smd, releaseDate);
             returnVector.add(c);
         
         }
@@ -267,6 +267,29 @@ public class DBmanager {
              System.out.println("Error in addComponent Method");
              return false;
         }
+    }
+    
+    public boolean editComponent(Component inComponent){
+        try{
+        connectDB();
+        
+            String SQL = "UPDATE TBLComponents SET ComponentName = '"+inComponent.getComponentName()+"', ComponentPrice = "+inComponent.getComponentPrice()+", ComponentQuantity = "+inComponent.getComponentQuantity() +", SMD = "+inComponent.isSMD()+", ReleaseDate = #"+ inComponent.getReleaseDate()+"# WHERE ComponentID = "+inComponent.getId() +";";
+     
+            Statement s = connection.createStatement();
+            
+            System.out.println(SQL);
+            
+            s.execute(SQL);
+            
+            
+        disconnectDB();
+        
+        return true;
+        }catch(SQLException e){
+             System.out.println("Error in editComponent Method " + e);
+             return false;
+        }
+        
     }
     
 }

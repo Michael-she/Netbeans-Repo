@@ -16,6 +16,7 @@ public class Component {
                 private int componentQuantity;
                  private boolean SMD;
         private LocalDate releaseDate;
+        private int id;
     
       
     
@@ -29,11 +30,31 @@ public class Component {
         this.componentQuantity = componentQuantity;
         this.SMD = SMD;
         this.releaseDate = releaseDate;
+        
     }
+
+    public Component( int id, String componentName, double componentPrice, int componentQuantity, boolean SMD, LocalDate releaseDate) {
+        this.componentName = componentName;
+        this.componentPrice = componentPrice;
+        this.componentQuantity = componentQuantity;
+        this.SMD = SMD;
+        this.releaseDate = releaseDate;
+        this.id = id;
+    }
+    
+    
+    
+    
     public String toString(){
             return  componentName;// + " | " + componentPrice+" | " + componentQuantity+" | " + SMD+" | " + releaseDate;
     }            
 
+    public int getId() {
+        return id;
+    }
+
+    
+    
     public String getComponentName() {
         return componentName;
     }
